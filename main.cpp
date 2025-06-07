@@ -124,8 +124,10 @@ int main()
             cout << "Please Enter your choice:\n";
             cout << "1. Player begins first.\n";
             cout << "2. Computer begins first.\n";
+            cout<< "3. Exit <--\n";
             cin >> starter;
-
+            if(starter==3)
+                goto out;
             if (starter == 1 || starter == 2)
                 break;
 
@@ -153,7 +155,7 @@ int main()
         cin >> choice;
 
     } while (choice == 'Y' || choice == 'y');
-
+    out:
     cout << "Thanks for playing!" << endl;
     system("pause");
     return 0;
