@@ -110,7 +110,8 @@ int computer_player(char *arr)
 }
 
 int main()
-{
+{   
+    system("cls");
     srand(time(0));  // Seeding randomness once
 
     char choice;
