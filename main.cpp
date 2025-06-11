@@ -8,6 +8,7 @@ using namespace std;
 void block_display(char *arr);
 int human_player(char *arr);
 int computer_player(char *arr);
+int dual_player(char *arr);
 int check_winner(char *arr, char symbol);
 int check_draw(char *arr);
 
@@ -108,6 +109,39 @@ int computer_player(char *arr)
     return 0;
 }
 
+int dual_player(char *arr)
+{
+    char symbol='X';
+    int n;
+    while(true){
+    while (true) {
+        block_display(arr);
+        cout<<"Player "<<symbol <<" moves.\n";
+        cout << "Enter a position (1-9): ";
+        cin >> n;
+        if (n >= 1 && n <= 9 && arr[n - 1] == ' ') {
+            arr[n - 1] = symbol;
+            break;
+        } else {
+            cout << "Invalid move. Try again." << endl;
+            system("pause");
+        }
+    }
+
+    block_display(arr);
+    if (check_winner(arr, symbol)) {
+        cout << "Player "<<symbol<<" wins." << endl;
+        return 1;
+    }
+    if (check_draw(arr)) {
+        cout << "The game is draw!!" << endl;
+        return 1;
+    }
+    symbol=(symbol=='X')?'O':'X';
+    }
+    return 1;
+}
+
 int main()
 {
     srand(time(0));  // Seed the RNG
@@ -124,11 +158,12 @@ int main()
             cout << "Please Enter your choice:\n";
             cout << "1. Player begins first.\n";
             cout << "2. Computer begins first.\n";
-            cout<< "3. Exit <--\n";
+            cout << "3. Two players game.\n";
+            cout << "4. Exit <--\n";
             cin >> starter;
-            if(starter==3)
+            if(starter==4)
                 goto out;
-            if (starter == 1 || starter == 2)
+            if (starter == 1 || starter == 2|| starter ==3)
                 break;
 
             cout << "Invalid choice. Try again.\n";
@@ -143,11 +178,15 @@ int main()
                 if (play) break;
                 play = computer_player(place);
                 if (play) break;
-            } else {
+            } else if(starter == 2){
                 play = computer_player(place);
                 if (play) break;
                 play = human_player(place);
                 if (play) break;
+            }
+            else{
+                play=dual_player(place);
+                if(play) break;
             }
         }
 
