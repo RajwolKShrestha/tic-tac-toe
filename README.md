@@ -11,4 +11,8 @@
 - **Win/draw detection** — Announces the winner or a tie.
 - **Reset functionality** — Restart after each round.
 - **Responsive design** — Adapts to desktops, tablets, and mobile.
+## 🚀 Installation & Usage
 
+1. Clone this repository:
+   ```bash
+   git clone https://github.com/RajwolKShrestha/tic-tac-toe.git
